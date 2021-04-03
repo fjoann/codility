@@ -1,6 +1,3 @@
-# you can write to stdout for debugging purposes, e.g.
-# print("this is a debug message")
-
 from statistics import mean
 
 def solution(A):
@@ -12,4 +9,9 @@ def solution(A):
         if avg_2 < min_avg:
             min_avg = avg_2
             min_idx = i
-        if avg_3 <
+        if avg_3 < min_avg:
+            min_avg = avg_3
+            min_idx = i
+    if mean(A[-2:]) < min_avg:
+        min_idx = len(A) - 2
+    return min_idx
