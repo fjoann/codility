@@ -12,4 +12,6 @@ def solution(A):
     for i in range(len(A)):
         if A[i] == 0:
             passing += pref[n - 1] - pref[i + 1]
+    if passing > 1000000000:
+        return -1
     return passing
