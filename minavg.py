@@ -5,7 +5,7 @@ def solution(A):
     min_avg = 10001
  
     for i in range(len(A) - 1):
-		avg_2 = mean(A[i:i+1])
+	    avg_2 = mean(A[i:i+1])
         if avg_2 < min_avg:
             min_i = i
             min_avg = avg_2
