@@ -1,7 +1,11 @@
 def solution(A):
-    min_diff = abs(sum(A[:1]) - sum(A[1:]))
-    for i in range(1, len(A) - 1):
-        diff = abs(sum(A[:i + 1]) - sum(A[i + 1:]))
-        if diff < min_diff:
-            min_diff = diff
+    total = sum(A)
+    min_diff = float('inf')
+    left = right = 0
+    for i in A[:-1]:
+        left += i
+        right = total - left
+        min_diff = min(
+            abs(right - left), min_diff
+        )
     return min_diff
