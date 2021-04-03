@@ -1,17 +1,18 @@
-from statistics import mean
+def prefix_sum(A):
+    n = len(A)
+    P = [0] * (n + 1)
+    for k in range(1, n + 1):
+        P[k] = P[k - 1] + A[k - 1]
+    return P
 
 def solution(A):
+    pref = prefix_sum(A)
+    min_mean = 10000
     min_i = 0
-    min_avg = 10001
- 
-    for i in range(len(A) - 1):
-        avg_2 = mean(A[i:i+2])
-        if avg_2 < min_avg:
-            min_i = i
-            min_avg = avg_2
-        avg_3 = mean(A[i:i+3])
-        if i < len(A) - 2 and avg_3 < min_avg:
-            min_i = i
-            min_avg = avg_3
- 
+    for i in range(len(A)):
+        for j in range(i + 1, min(i + 3,len(A))):
+            mean = (pref[j + 1] - pref[i]) / (j - i + 1)
+            if mean < min_mean:
+                min_mean = mean
+                min_i = i
     return min_i
