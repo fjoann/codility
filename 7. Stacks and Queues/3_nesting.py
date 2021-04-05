@@ -9,7 +9,8 @@ def solution(S):
             s.append(p)
         elif s:
             s.pop()
-        else: return 0
+        else:
+            return 0
     if not s:
         return 1
     return 0
