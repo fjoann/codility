@@ -1,9 +1,9 @@
 def solution(S):
     s = []
     if not S:
-        return 0
-    if S[0] == ')':
         return 1
+    if S[0] == ')':
+        return 0
     for p in S:
         if p == '(':
             s.append(p)
