@@ -1,7 +1,7 @@
-import sys
+import math
 
-def fib_steps(n):
-    a, b = 1, 1
+def fib(n):
+    a = b = 1
     yield 1
     while a + b <= n:
         yield a + b
@@ -9,12 +9,14 @@ def fib_steps(n):
 
 def solution(A):
     n = len(A) + 1
-
-    ret = [sys.maxsize] * (n + 1)
-    ret[0] = 0
-
+    pos = [math.inf] * (n + 1)
+    pos[0] = 0
+    
     for i in range(1, n + 1):
         if (i < n and A[i - 1] == 1) or (i == n):
-            ret[i] = min([ret[i - x] + 1 for x in fib_steps(i)])
+            pos[i] = min([pos[i - x] + 1 for x in fib(i)])
 
-    return ret[-1] if ret[-1] < sys.maxsize else -1
+    if pos[-1] < math.inf:
+        return pos[-1]
+    else:
+        return -1
